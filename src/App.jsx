@@ -72,32 +72,31 @@ function App() {
   if (currentPage === 'aiassist') return <AIAssist onBack={() => setCurrentPage('dashboard')} />
   
   return (
-    <div style={{ background: 'linear-gradient(135deg, #d4f5a0 0%, #fef9c3 50%, #fce4ec 100%)', minHeight: '100vh' }}>
-      {/* Header */}
-      <div style={{ background: 'linear-gradient(to right, #f97316, #991b1b)' }} className="rounded-b-3xl px-8 py-5 relative flex items-center justify-center">
-        <div className="flex items-center">
-          <div className="w-12 h-12 bg-black flex items-center justify-center rounded-xl">
-            <span className="text-2xl">🏫</span>
+    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #d4f5a0 0%, #fef9c3 50%, #fce4ec 100%)' }}>
+      <div className="container">
+        {/* Header */}
+        <div style={{ background: 'linear-gradient(to right, #f97316, #991b1b)' }} className="header-wrap rounded-b-3xl">
+          <div className="header-top-left header-date">
+            <div>{formattedDate}</div>
+            <div className="text-xs italic text-white/80">"1% inspiration, 99% effort."</div>
           </div>
-          <span className="text-white text-2xl font-bold ml-3">Sir Syed Model Public School</span>
-        </div>
-        
-        <div className="absolute bottom-4 left-6">
-          <div className="text-white font-semibold text-sm">{formattedDate}</div>
-          <div className="text-white text-xs italic mt-1">"1% inspiration, 99% effort."</div>
-        </div>
-        
-        <div className="absolute top-4 right-6">
-          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-            <span className="text-gray-800 font-bold text-lg">{dayNumber}</span>
-          </div>
-        </div>
-      </div>
 
-      {/* Stats Cards Row */}
-      <div className="flex flex-wrap gap-4 justify-center mt-6 px-6">
-        {/* Students Card */}
-        <div className="bg-blue-100 rounded-2xl shadow-md p-5 w-full sm:w-72 md:w-56 flex flex-col items-center cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-200">
+          <div className="header-main">
+            <div className="header-logo">
+              <img src="/profile.jpeg" alt="Profile" className="w-full h-full object-cover" />
+            </div>
+            <span className="header-title">Sir Syed Model Public School</span>
+          </div>
+
+          <div className="header-top-right">
+            <div className="header-badge">{dayNumber}</div>
+          </div>
+        </div>
+
+        {/* Stats Cards Row */}
+        <div className="cards-grid mt-6">
+          {/* Students Card */}
+          <div className="card bg-blue-100 shadow-md flex flex-col items-center cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-200">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-blue-500 text-xl">👤</span>
             <span className="text-blue-600 font-semibold">Students</span>
@@ -144,7 +143,7 @@ function App() {
 
         {/* Fee Card */}
         <div 
-          className="bg-green-100 rounded-2xl shadow-md p-5 w-full sm:w-72 md:w-56 cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-200"
+          className="card bg-green-100 shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-200"
           onClick={() => setShowFeeModal(true)}
         >
           <div className="flex items-center mb-3">
@@ -178,7 +177,7 @@ function App() {
         {/* Staff Card */}
         <div 
           onClick={() => setCurrentPage('staff')}
-          className="bg-pink-100 rounded-2xl shadow-md p-5 w-full sm:w-72 md:w-56 flex flex-col items-center cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-200"
+          className="card bg-pink-100 shadow-md flex flex-col items-center cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-200"
         >
           <div className="flex items-center mb-3">
             <span className="text-pink-500 text-xl mr-2">👥</span>
@@ -226,48 +225,48 @@ function App() {
       </div>
 
       {/* Admission & Dropout Card */}
-      <div className="mt-6 mx-4 sm:mx-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-md p-5">
+      <div className="mt-6 mx-4 sm:mx-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-md p-5 overflow-hidden">
         <div className="font-semibold text-gray-700 text-base mb-4">👥 Admission & Dropout</div>
-        <div className="flex flex-wrap justify-between gap-3">
-          <div className="text-center flex-1 min-w-[120px]">
-            <div className="text-gray-400 text-xs mb-2">Inactive</div>
-            <div className="text-gray-700 font-semibold">0</div>
+        <div className="admission-grid">
+          <div className="text-center">
+            <p className="admission-label text-gray-400 mb-2">Inactive</p>
+            <p className="admission-value text-gray-700">0</p>
           </div>
           <div className="text-center">
-            <div className="text-gray-400 text-xs mb-2">This Week</div>
+            <p className="admission-label text-gray-400 mb-2">This Week</p>
             <div>
-              <span className="text-green-500 font-semibold">+0</span>
-              <span className="text-red-500 font-semibold ml-2">-0</span>
+              <span className="badge-inline bg-green-100 text-green-700">+0</span>
+              <span className="badge-inline bg-red-100 text-red-700 ml-2">-0</span>
             </div>
           </div>
           <div className="text-center">
-            <div className="text-gray-400 text-xs mb-2">This Month</div>
+            <p className="admission-label text-gray-400 mb-2">This Month</p>
             <div>
-              <span className="text-green-500 font-semibold">+0</span>
-              <span className="text-red-500 font-semibold ml-2">-0</span>
+              <span className="badge-inline bg-green-100 text-green-700">+0</span>
+              <span className="badge-inline bg-red-100 text-red-700 ml-2">-0</span>
             </div>
           </div>
           <div className="text-center">
-            <div className="text-gray-400 text-xs mb-2">3 Months</div>
+            <p className="admission-label text-gray-400 mb-2">3 Months</p>
             <div>
-              <span className="text-green-500 font-semibold">+0</span>
-              <span className="text-red-500 font-semibold ml-2">-0</span>
+              <span className="badge-inline bg-green-100 text-green-700">+0</span>
+              <span className="badge-inline bg-red-100 text-red-700 ml-2">-0</span>
             </div>
           </div>
           <div className="text-center">
-            <div className="text-gray-400 text-xs mb-2">6 Months</div>
+            <p className="admission-label text-gray-400 mb-2">6 Months</p>
             <div>
-              <span className="text-green-500 font-semibold">+0</span>
-              <span className="text-red-500 font-semibold ml-2">-0</span>
+              <span className="badge-inline bg-green-100 text-green-700">+0</span>
+              <span className="badge-inline bg-red-100 text-red-700 ml-2">-0</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Quick Actions Section */}
-      <div className="mt-8 px-4 sm:px-6">
+      <div className="mt-8">
         <div className="text-gray-700 font-bold text-lg mb-3">Quick Actions</div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="quick-grid">
           <button onClick={() => setCurrentPage('attendance')} className="bg-cyan-300 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer hover:scale-105 hover:shadow-lg transition-all duration-200">
             <CalendarCheck size={32} color="white" />
             <span className="text-white text-sm font-medium mt-2">Attendance</span>
@@ -304,9 +303,9 @@ function App() {
       </div>
 
       {/* Tools Section */}
-      <div className="mt-6 px-4 sm:px-6 pb-10">
+      <div className="mt-6 pb-10">
         <div className="text-gray-700 font-bold text-lg mb-3">Tools</div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="tools-grid">
           <button onClick={() => setCurrentPage('addstudent')} className="bg-gray-200 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer hover:scale-105 hover:shadow-lg transition-all duration-200">
             <UserPlus size={32} color="#374151" />
             <span className="text-gray-700 text-sm font-medium mt-2 underline">Add Student</span>
@@ -329,6 +328,7 @@ function App() {
       {showFeeModal && (
         <FeeMonthlyModal onClose={() => setShowFeeModal(false)} />
       )}
+      </div>
     </div>
   )
 }

@@ -1,8 +1,200 @@
 @import "tailwindcss";
 
-body { 
-  font-family: 'Poppins', sans-serif; 
-  margin: 0; 
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.header-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 16px;
+  position: relative;
+}
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.8);
+}
+
+.header-title {
+  font-size: clamp(1rem, 4vw, 1.8rem);
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
+.header-top-left,
+.header-top-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.header-date {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.header-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.header-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.cards-grid,
+.quick-grid,
+.tools-grid {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.cards-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.quick-grid,
+.tools-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card {
+  width: 100%;
+  min-width: 0;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-row .row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .quick-grid,
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 769px) {
+  .header-wrap {
+    padding: 16px 32px;
+  }
+
+  .header-logo {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+  }
+
+  .quick-grid,
+  .tools-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.admission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.admission-grid > div {
+  min-width: 140px;
+}
+
+.admission-label {
+  font-size: clamp(10px, 2vw, 13px);
+}
+
+.admission-value {
+  font-weight: 700;
+}
+
+.badge-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: clamp(10px, 2vw, 13px);
+}
+
+@media (max-width: 480px) {
+  .cards-grid,
+  .quick-grid,
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-wrap {
+    justify-content: space-between;
+  }
+
+  .header-top-left,
+  .header-top-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-main {
+    order: 3;
+  }
 }
 
 
